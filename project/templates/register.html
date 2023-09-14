@@ -1,0 +1,40 @@
+{% extends "base_layout.html" %}
+
+{% block page_content %}
+<div class="row mt-5">
+    <div class="col-lg-8  offset-lg-2">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>Face Recognition with Play Alarm</h3>
+          </div>
+          
+          <div class="card-body">
+
+            <form method="post" action="{{ url_for('requestActions') }}">
+              <div class="input-group mb-3">
+                <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Enter your full name then click capture">
+              </div>
+              <input type="submit" value="Stop/Start" name="stop" class="btn btn-primary" />
+              <input type="submit" value="Capture" name="click" class="btn btn-primary"/>
+              <input type="submit" value="Face Only" name="face" class="btn btn-primary"/>
+              <input type="submit" value="Start/Stop Recording" name="rec" class="btn btn-primary"/>
+              <input type="submit" value="Face Recognize" name="face_verify" class="btn btn-primary"/>
+            </form>
+            <div class="row mt-5">
+              <div class="col-lg-12">
+                <div class="input-group mb-3">
+                  <img src="{{ url_for('video_capturing') }}" class="border border-primary" width="100%">
+                </div>
+              </div>
+            </div>
+            <h3 style="font-family:courier;">Instructions:</h3>
+            <ol style="font-family:courier;">
+            <li>Stop/Start--Toggle between stop or start live streaming</li>
+            <li>Capture--Take still-shot and save in the 'shots' directory</li>
+            <li>Face Only--Shows just your face if present(Toggle on/off)</li> 
+            <li>Start/Stop Recording--Toggle between starting and stopping video recording</li> </ol>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}
